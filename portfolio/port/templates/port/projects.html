@@ -1,0 +1,81 @@
+{% load static %}
+<div class="post-wrapper">
+  {% for project in projects %}
+    <div class="post">
+      <img class="thumbnail" src={{project.main_image}}>
+      <div class="post-preview">
+        <h6 class="post-title">{{project.title.upper}}</h6>
+        <p class="post-intro">{{project.details}}</p>
+        <hr>
+        <a class = 'post-intro' href={% url 'project' project.slug%}>Details</a>
+      </div>
+    </div>
+  {% empty %}
+  <h4 style = 'text-align:center'>Nothing Here... Come Back later</h4>
+  {% endfor %}
+  </div>
+  {% comment %} </div>
+
+  <div>
+    <div class="post">
+      <img class="thumbnail" src="images/tradex.png">
+      <div class="post-preview">
+        <h6 class="post-title">Bleeng Music</h6>
+        <p class="post-intro">Listen to Latest music online. Storage is not an hindrance to listening to the latest hits by your favorite artistes.</p>
+        <hr>
+        <a href="https://jeremiahjacinth13.github.io/rock-paper-scissors-game/">Check Bleeng Music Out</a>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="post">
+      <img class="thumbnail" src={% static 'images/easybank.png' %}>
+      <div class="post-preview">
+        <h6 class="post-title">EASYBANK</h6>
+        <p class="post-intro">A static landing page for an imaginary bank. Mobile Responive and optimized for Search Engines</p>
+        <hr>
+        <a href="https://jeremiahjacinth13.github.io/easybank-landing-page/">Check EASYBANK Out</a>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div>
+    <div class="post">
+      <img class="thumbnail" src="images/ludo.png">
+      <div class="post-preview">
+        <h6 class="post-title">Online Ludo Board Game</h6>
+        <p class="post-intro">Inspired by AN ONLINE GAME WEBSITE which I tried to implement</p>
+        <hr>
+        <a href="https://jeremiahjacinth13.github.io/ludo-game">See Live Example</a>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="post">
+      <img class="thumbnail" src="images/musicApp.png">
+      <div class="post-preview">
+        <h6 class="post-title">Bleeng Music</h6>
+        <p class="post-intro">Listen to Latest music online. Storage is not an hindrance to listening to the latest hits by your favorite artistes.</p>
+        <hr>
+        <a href="https://jeremiahjacinth13.github.io/rock-paper-scissors-game/">Check Bleeng Music Out</a>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="post">
+      <img class="thumbnail" src="images/easybank.png">
+      <div class="post-preview">
+        <h6 class="post-title">EASYBANK</h6>
+        <p class="post-intro">A static landing page for an imaginary bank. Mobile Responive and optimized for Search Engines</p>
+        <hr>
+        <a href="https://jeremiahjacinth13.github.io/easybank-landing-page/">Check EASYBANK Out</a>
+      </div>
+    </div>
+    </div>
+
+</div> {% endcomment %}
