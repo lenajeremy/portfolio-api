@@ -1,0 +1,115 @@
+{% extends 'port/layout.html' %}
+{% load static %}
+{% block style %}
+<style>
+  .nav-wrapper{
+			position: fixed;
+			width: 100%;
+			top: 0;
+			z-index:100;
+			height: 80px;
+		}
+		#navigation{
+			margin-right: 40px;
+			font-size: 1.6rem;
+		}
+		body{
+      padding-top: 80px;
+      background: var(--secondaryColor);
+      height: 100vh;
+      box-sizing: border-box;
+		}
+  .formPage{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+  }
+  .imageRoom, .contactRoom{
+    width: 50%;
+  }
+  #contact-form{
+    font-size: 18px;
+    border: none;
+    border-radius: 0;
+    margin: 0;
+    max-width: 100%;
+    height: -webkit-fill-available;
+    display: flex;
+  }
+  #contact-form > div{
+    width: 90%;
+    margin: auto auto 20px auto;
+  }
+  #contact-form h1{
+    font-size: 3rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 0.5rem;
+    margin-bottom: 20px;
+  }
+  img{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    object-position: center;
+  }
+</style>
+{% endblock style %}
+{% block body %}
+<div class="nav-wrapper">
+
+  <!-- Link around dots-wrapper added after tutorial video -->
+  <a href={% url 'homepage' %}>
+    <div class="dots-wrapper">
+      <div id="dot-1" class="browser-dot"></div>
+      <div id="dot-2" class="browser-dot"></div>
+      <div id="dot-3" class="browser-dot"></div>
+    </div>
+  </a>
+
+  <ul id="navigation">
+    <li><a href={% url "contact" %}>Contact</a></li>
+  </ul>
+</div>
+<div class = 'formPage'>
+  <div class = 'imageRoom'>
+    <img alt = 'background image' src = {% static 'images/bg.jpeg' %}/>
+  </div>
+  <div class = 'contactRoom'>
+    <form id="contact-form" action="https://www.gmail.com" method = "POST" autocomplete="off">
+      <div>
+        <h1>GET IN TOUCH</h1>
+        <div class="form-field">
+          <label>Name</label>
+          <input class="input-field" type="text" name="name" required>
+          <div class="border"></div>
+        </div>
+
+        <div class="form-field">
+          <label>Subject</label>
+          <input class="input-field" type="text" name="subject" required>
+          <div class="border"></div>
+        </div>
+
+        <div class="form-field">
+          <label>Email</label>
+          <input class="input-field" type="text" name="email" required>
+          <div class="border"></div>
+        </div>
+
+        <div class="form-field">
+          <label>Message</label>
+          <textarea class="input-field" name="message" required></textarea>
+          <div class="border"></div>
+        </div>
+
+        <input id="submit-btn" type="submit" value="Send">
+      </div>
+    </form>
+  </div>
+</div>
+<script type = 'text/javascript' src = {% static 'script.js' %}></script>
+{% endblock body %}

@@ -32,9 +32,11 @@
 			margin: auto;
 		}
 		.main-container h3{
-			font-size: 3.5rem;
+			font-size: 5rem;
 			text-transform: uppercase;
 			text-align: center;
+			font-family: 'Courier New', Courier, monospace;
+			letter-spacing: 1.1rem;
 			margin-bottom: 20px;
 		}
 		.details{
@@ -45,6 +47,20 @@
 			opacity: 0.8;
 			width: 85%;
 			margin: auto;
+		}
+		.nav-wrapper{
+			position: fixed;
+			width: 100%;
+			top: 0;
+			z-index:100;
+			height: 80px;
+		}
+		#navigation{
+			margin-right: 40px;
+			font-size: 1.6rem;
+		}
+		body{
+			padding-top: 50px;
 		}
 
 	</style>
@@ -63,8 +79,7 @@
 		</a>
 
 		<ul id="navigation">
-			<li><a href="index.html#contact">Contact</a></li>
-
+			<li><a href={% url "contact" %}>Contact</a></li>
 		</ul>
 	</div>
 
@@ -74,7 +89,8 @@
 		<h3>{{project.title}}</h3>
 		<p class = 'details'>{{project.details}}</p>
 		<div class="img-container">
-			<img src={{project.main_image}}>
+			<img src={{project.main_image.image.url}}>
+			<p class = 'caption'>{{project.main_image.caption}}</p>
 		</div>
 		
 		<br>
@@ -105,7 +121,8 @@
 
 		<h5>Laboratory Admin Dashboard</h5>
 		<div class="img-container">
-			<img src={{project.secondary_image}}>
+			<img src={{project.secondary_image.image.url}}>
+			<p class = 'caption'>{{project.main_image.caption}}</p>
 		</div>
 
 		<h6>Sample ID Form</h5>

@@ -456,3 +456,10 @@ h6 { font-size: 16px;}
 .post hr{
 	box-shadow: 0px 2px 4px var(--previewBg);
 }
+.caption{
+	text-align:center;
+	font-size: 1.2rem;
+	opacity: 0.8;
+	color: var(--mainText);
+	margin-top: 10px;
+}

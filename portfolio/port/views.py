@@ -12,7 +12,7 @@ def project(request, project):
     project = get_object_or_404(Project, slug = slugify(project))
     return render(request, 'port/post.html', context = {'project': project.serialize()})
   except Http404:
-    return HttpResponseRedirect(request, f"{project}/")
+    return HttpResponseRedirect(reverse('homepage'))
   
 def new_project(request):
   if request.method.upper() == "GET":
@@ -28,4 +28,6 @@ def new_project(request):
     Image.objects.create(gallery = gallery, main = True, image = primaryimage)
     Image.objects.create(gallery = gallery, image = other_pictures)
     return HttpResponseRedirect(reverse('homepage'))
-    
+
+def contact(request):
+  return render(request, 'port/contact.html')

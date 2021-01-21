@@ -33,8 +33,11 @@ class Image(models.Model):
   image = models.ImageField(upload_to=upload_path)
   main = models.BooleanField(default = False)
   gallery = models.ForeignKey(Gallery, on_delete = models.CASCADE, related_name = 'images')
+  caption = models.CharField(max_length = 100, blank = True)
   
   def __str__(self):
-			return self.image.url
+    if self.main:
+  	  return self.gallery.project.title + " (Main)"
+    return self.gallery.project.title
  
   
