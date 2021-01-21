@@ -1,5 +1,6 @@
 {% extends 'port/layout.html' %}
 {% load static %}
+{% block title %}Talk to Me{% endblock title%}
 {% block style %}
 <style>
   .nav-wrapper{
@@ -56,6 +57,24 @@
     width: 100%;
     object-position: center;
   }
+  @media screen and (max-width: 768px){
+			body{
+				padding-top: 30px;
+			}
+			.nav-wrapper{
+				height: 60px;
+			}
+			#navigation{
+				font-size: 1.3rem;
+				margin-right: 10px;
+      }
+      .formPage{
+        display: block;
+      }
+      .contactRoom, .imageRoom{
+        width:100%;
+      }
+		}
 </style>
 {% endblock style %}
 {% block body %}

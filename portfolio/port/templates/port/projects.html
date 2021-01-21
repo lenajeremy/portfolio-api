@@ -14,3 +14,8 @@
   <h4 style = 'text-align:center'>Nothing Here... Come Back later</h4>
   {% endfor %}
   </div>
+  <div>
+    {% if user.username == 'admin' %}
+      <a href = {% url 'new_project' %}>Add Project</a>
+    {% endif %}
+</div>
