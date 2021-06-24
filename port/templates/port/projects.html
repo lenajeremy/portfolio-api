@@ -2,13 +2,14 @@
 <div class="post-wrapper">
   {% for project in projects %}
     <div class="post">
-      <img class="thumbnail" src={{project.main_image.image.url}}>
-      <div class="post-preview">
-        <h6 class="post-title">{{project.title.upper}}</h6>
-        <p class="post-intro">{{project.details}}</p>
-        <hr>
-        <a class = 'post-intro' href={% url 'project' project.slug%}>Details</a>
-      </div>
+      <a href={% url 'project' project.slug%}>
+        <img class="thumbnail" src={{project.main_image.image.url}}>
+        <br/>
+        <div class="post-preview">
+          <h6 class="post-title">{{project.title.upper}}</h6>
+          <p class="post-intro">{{project.details}}</p>
+        </div>
+      </a>
     </div>
   {% empty %}
   <h4 style = 'text-align:center'>Nothing Here... Come Back later</h4>

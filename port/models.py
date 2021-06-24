@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
 from django.conf import settings
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 
@@ -12,10 +13,12 @@ class Project(models.Model):
   title = models.CharField(max_length = 100)
   details = models.CharField(max_length = 250)
   slug = models.SlugField(max_length = 250, blank = True)
-  description = models.TextField()
+  description = RichTextField()
+  live_url = models.TextField()
+  github_url = models.TextField()
   
   def serialize(self):
-    data = {'title': self.title, 'details': self.details, 'slug': self.slug, 'main_image': self.gallery.images.get(main = True), 'secondary_image' : self.gallery.images.get(main = False)}
+    data = {'title': self.title, 'description': self.description, 'details': self.details, 'slug': self.slug, 'main_image': self.gallery.images.get(main = True), 'secondary_image' : self.gallery.images.get(main = False), 'live_url': self.live_url, 'github_url': self.github_url}
     return data
   
   def __str__(self):

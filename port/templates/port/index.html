@@ -45,13 +45,14 @@
 					<p id="settings-note">*Theme settings will be saved for<br>your next vist</p>
 				</div>
 
-				<div class="right-column">
+				<div class="right-column" style = 'position: relative;'>
 
 					<div id="preview-shadow">
 						<div id="preview">
 							<div id="corner-tl" class="corner"></div>
 							<div id="corner-tr" class="corner"></div>
 							<h3>What I Do</h3>
+							<img src="{% static 'images/programming.gif' %}" alt="" class = 'gif'>
 							<p>I'm a fullstack web developer. I create responsive and highly scalable web applications with attractive and catchy user interface as well as a secure and sophisticated backend</p>
 							<div id="corner-br" class="corner"></div>
 							<div id="corner-bl" class="corner"></div>
@@ -103,10 +104,11 @@
 				<div class="social-links">
 					<img id="social_img" src={% static 'images/desktop.jpg' %}>
 					<h3>Find me on Facebook & Twitter</h3>
-
-					<a target="_blank" href="https://www.youtube.com/c/dennisivy">Facebook: @Lena Jeremiah</a>
-					<br>
-					<a target="_blank" href="https://twitter.com/jeremiahlena13">Twitter: @jeremiahlena13</a>
+					<div class = 'socials'>
+					<a target="_blank" href="https://www.facebook.com/jeremiahlena13"><img src={% static 'images/facebook.png' %}></a>
+					<a target="_blank" href="https://mobile.facebook.com/jeremiah.lena.3"><img src={% static 'images/twitter.png' %}></a>
+					<a target="_blank" href="https://www.linkedin.com/in/jeremiah-lena-790755184/"><img src={% static 'images/linkedin.svg' %}></a>
+				</div>
 				</div>
 			</div>
 
@@ -155,6 +157,10 @@
 			</form>
 		</div>
 	</section> 
+	<section id = 'footer'>
+		&copy;2021 Designed by Lena Jeremiah
+	</section>
 	<script type="text/javascript" src = {% static 'script.js' %}></script>
 	</body>
 {% endblock body %}
+
