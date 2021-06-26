@@ -3,7 +3,7 @@
   {% for project in projects %}
     <div class="post">
       <a href={% url 'project' project.slug%}>
-        <img class="thumbnail" src={{project.main_image.image.url}}>
+        <img class="thumbnail" src={{project.main_image.publicUrl}}>
         <br/>
         <div class="post-preview">
           <h6 class="post-title">{{project.title.upper}}</h6>

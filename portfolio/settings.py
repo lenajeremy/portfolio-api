@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 from decouple import config
+import pyrebase
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -24,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = not False
+DEBUG = False
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.herokuapp.com']
 
@@ -174,3 +175,16 @@ STATICFILES_DIRS = (
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+FIREBASE_APP_CONFIG = {
+    "apiKey": "AIzaSyDeK3YpGhjutyg3qqzDyKEa-YthCuVYtNw",
+    "authDomain": "portfolio-36ef9.firebaseapp.com",
+    "projectId": "portfolio-36ef9",
+    "databaseURL": "https://portfolio-36ef9.firebaseiocom",
+    "storageBucket": "portfolio-36ef9.appspot.com",
+    "messagingSenderId": "713774971105",
+    "appId": "1:713774971105:web:c943e020863b78a14c9fa0"
+}
+
+firebase = pyrebase.initialize_app(FIREBASE_APP_CONFIG)
+FIREBASE_STORAGE = firebase.storage()

@@ -2,7 +2,8 @@ from django.db import models
 from django.utils.text import slugify
 from django.conf import settings
 from ckeditor.fields import RichTextField
-
+from portfolio.settings import FIREBASE_STORAGE as fire_storage
+from django.core.files.storage import default_storage
 # Create your models here.
 
 def upload_path(instance, filename):
@@ -37,8 +38,18 @@ class Image(models.Model):
   main = models.BooleanField(default = False)
   gallery = models.ForeignKey(Gallery, on_delete = models.CASCADE, related_name = 'images')
   caption = models.CharField(max_length = 100, blank = True)
+  publicUrl = models.TextField(default = '')
+
+  def saveToCloud(self):
+    self.save()
+    file = self.image
+    file_save = default_storage.save(file.name, file)
+    stuff = fire_storage.child("Project Images/" + file.name).put("media/" + file.name)
+    self.publicUrl = f"https://firebasestorage.googleapis.com/v0/b/{stuff['bucket']}/o/{stuff['name']}?alt=media?alt=media"
+    self.save()
+
   
-  def __str__(self):
+def __str__(self):
     if self.main:
   	  return self.gallery.project.title + " (Main)"
     return self.gallery.project.title
