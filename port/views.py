@@ -18,8 +18,6 @@ config = {
 # firebase = pyrebase.initialize_app(config)
 # storage = firebase.storage()
 
-# functional views`
-
 
 def index(request):
     context = [project.serialize() for project in Project.objects.all()]
