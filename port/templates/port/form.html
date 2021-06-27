@@ -22,6 +22,7 @@
   {% csrf_token %}
   <input type = 'text' name = 'title' placeholder = 'Enter title'/><br>
   <input type = 'text' name = 'description' placeholder = 'Description'/><br>
+  <input type="hidden" name="description" class = 'description'>
   <!-- <textarea name = 'long_description' placeholder = 'Long description (Not Compulsory)'></textarea> -->
   <div id = 'long_description'></div>
   <input type = 'text' name = 'github_url' placeholder = 'GitHub URL'/><br>
@@ -31,9 +32,12 @@
   <button type = 'submit'>Submit</button>
 </form>
 <script>
+  const descriptionFormField = document.querySelector('.description');
   ClassicEditor
     .create(document.querySelector('#long_description'))
     .catch(error => console.error(error));
+
+  document.querySelector('.ck-content').addEventListener('input', event => descriptionFormField.value  = event.target.innerHTML)
 </script>
 <script type = 'text/javascript' src = {% static 'script.js'%}></script>
 {% endblock body %}
@@ -62,7 +66,7 @@
 			padding-top: 50px;
 		}
   form{
-    width:30%;
+    width:70%;
     margin: auto;
     margin-top:5%;
   }

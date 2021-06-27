@@ -482,7 +482,11 @@ h6 { font-size: 16px;}
 	justify-content: space-around;
 }
 .socials img{
-	width: 60px;
-	height: 60px;
+	width: 40px;
+	height: 40px;
 	border-radius: 50%;
+}
+.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline.ck-focused,
+.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline.ck-blurred{
+	height: 45vh;
 }
