@@ -45,7 +45,7 @@ class Image(models.Model):
     file = self.image 
     file_save = default_storage.save(file.name, file)  #saves the file to the default storage
     stuff = fire_storage.child("Project Images/" + file.name).put("media/" + file.name) #puts the file in firebase storage
-    self.publicUrl = stuff.get_url()
+    self.publicUrl = fire_storage.child("Project Images/" + file.name).get_url(stuff['downloadTokens'])
     self.save()
 
   

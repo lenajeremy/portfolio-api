@@ -332,6 +332,12 @@ h6 { font-size: 16px;}
     right: -150px;
     z-index: 0;
 }
+@media screen and (max-width: 500px){
+	.gif{
+		right: 10px;
+		width: 55px;
+	}
+}
 .post{
 	background: white;
 	border:1px solid var(--borderColor);
