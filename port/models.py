@@ -41,11 +41,11 @@ class Image(models.Model):
   publicUrl = models.TextField(default = '')
 
   def saveToCloud(self):
-    self.save()
-    file = self.image
-    file_save = default_storage.save(file.name, file)
-    stuff = fire_storage.child("Project Images/" + file.name).put("media/" + file.name)
-    self.publicUrl = f"https://firebasestorage.googleapis.com/v0/b/{stuff['bucket']}/o/{stuff['name']}?alt=media?token={stuff[token]}"
+    self.save() #this first saves the image to the database
+    file = self.image 
+    file_save = default_storage.save(file.name, file)  #saves the file to the default storage
+    stuff = fire_storage.child("Project Images/" + file.name).put("media/" + file.name) #puts the file in firebase storage
+    self.publicUrl = stuff.get_url()
     self.save()
 
   
