@@ -45,7 +45,7 @@ class Image(models.Model):
     file = self.image
     file_save = default_storage.save(file.name, file)
     stuff = fire_storage.child("Project Images/" + file.name).put("media/" + file.name)
-    self.publicUrl = f"https://firebasestorage.googleapis.com/v0/b/{stuff['bucket']}/o/{stuff['name']}?alt=media?alt=media"
+    self.publicUrl = f"https://firebasestorage.googleapis.com/v0/b/{stuff['bucket']}/o/{stuff['name']}?alt=media?token={stuff[token]}"
     self.save()
 
   
