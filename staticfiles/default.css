@@ -69,16 +69,10 @@ h6 { font-size: 16px;}
 	border-bottom:1px solid var(--borderColor);
 	overflow:auto;
 }
-
-
-
-
 .main-container{
 	padding: 3em;
 	margin: 0 auto;
 }
-
-
 .greeting-wrapper{
 	display: grid;
 	text-align: center;
@@ -332,12 +326,6 @@ h6 { font-size: 16px;}
     right: -150px;
     z-index: 0;
 }
-@media screen and (max-width: 500px){
-	.gif{
-		right: 10px;
-		width: 55px;
-	}
-}
 .post{
 	background: white;
 	border:1px solid var(--borderColor);
@@ -428,7 +416,7 @@ h6 { font-size: 16px;}
 }
 @media screen and (max-width: 1200px){
 	.main-container{
-		width: 95%;
+		width: 90%;
 	}
 }
 
@@ -495,4 +483,14 @@ h6 { font-size: 16px;}
 .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline.ck-focused,
 .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline.ck-blurred{
 	height: 45vh;
+}
+@media screen and (max-width: 500px){
+	.gif{
+		right: 10px;
+		width: 150px;
+		top: -30px;
+	}
+	.main-container{
+		padding: 0rem!important;
+	}
 }
