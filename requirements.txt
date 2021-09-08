@@ -27,7 +27,7 @@ jws==0.1.3
 msgpack==1.0.2
 oauth2client==3.0.0
 packaging==20.9
-Pillow==8.2.0
+Pillow==8.3.2
 proto-plus==1.18.1
 protobuf==3.17.3
 pyasn1==0.4.8
