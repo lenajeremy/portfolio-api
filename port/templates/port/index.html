@@ -1,20 +1,20 @@
 {% extends 'port/layout.html' %}
 {% load static %}
-{% block title %}Lena Jeremiah{% endblock title%}
+{% block title %}Jeremiah Lena{% endblock title%}
 {% block body %}
+
 <body>
 
 	<section class="s1">
 		<div class="main-container">
 			<div class="greeting-wrapper">
-				<h1>Hi, I'm Lena Jeremiah</h1>
+				<h1>Hi, I'm Jeremiah Lena</h1>
 			</div>
 
 
 			<div class="intro-wrapper">
 				<div class="nav-wrapper">
 
-					<!-- Link around dots-wrapper added after tutorial video -->
 					<a href="index.html">
 						<div class="dots-wrapper">
 							<div id="dot-1" class="browser-dot"></div>
@@ -22,7 +22,7 @@
 							<div id="dot-3" class="browser-dot"></div>
 						</div>
 					</a>
-					
+
 
 					<ul id="navigation">
 						<li><a href={% url "contact" %}>Contact</a></li>
@@ -38,22 +38,25 @@
 						<div data-mode="light" id="light-mode" class="theme-dot"></div>
 						<div data-mode="blue" id="blue-mode" class="theme-dot"></div>
 						<div data-mode="green" id="green-mode" class="theme-dot"></div>
-						<div data-mode="pink" id="pink-mode" class="theme-dot"></div>
 						<div data-mode="purple" id="purple-mode" class="theme-dot"></div>
 					</div>
 
 					<p id="settings-note">*Theme settings will be saved for<br>your next vist</p>
 				</div>
 
-				<div class="right-column" style = 'position: relative;'>
+				<div class="right-column" style='position: relative;'>
 
 					<div id="preview-shadow">
 						<div id="preview">
 							<div id="corner-tl" class="corner"></div>
 							<div id="corner-tr" class="corner"></div>
-							<h3>What I Do</h3>
-							<img src="{% static 'images/programming.gif' %}" alt="" class = 'gif'>
-							<p>I'm a fullstack web developer. I create responsive and highly scalable web applications with attractive and catchy user interface as well as a secure and sophisticated backend</p>
+							<h3>Who I Am</h3>
+							<img src="{% static 'images/programming.gif' %}" alt="" class='gif'>
+							<p>
+								I'm a frontend web developer. I love crafting beautiful website and mobile applications.
+								I strongly believe that products should be built with the users in mind and that every
+								part of the product should reflect that, backend and frontend.
+							</p>
 							<div id="corner-br" class="corner"></div>
 							<div id="corner-bl" class="corner"></div>
 						</div>
@@ -67,48 +70,57 @@
 
 			<div class="about-wrapper">
 				<div class="about-me">
-					<h4>More about me</h4>
+					<h4>More About Me</h4>
 
 					<p>I build new projects just to tickle my brain and love teaching others how they're made.</p>
 
-					<p>Out of quest for more knowledge about programming and web development in particular, I take projects that are higher than my level of expertise and still end up completing it well.</p>
+					<p>I have a reasonable amount of experience building web and mobile applications that solves
+						problems and help people. I'm always looking out for opportunities to be better at my craft.
+					</p>
 
 					<hr>
 
 					<h4>TOP EXPERTISE</h4>
 
-					<p>Fullstack developer with primary focus on React, Django & Vanilla JavaScript</p>
+					<p>Frontend developer with primary focus on React, React Native & JavaScript</p>
 
 					<div id="skills">
 						<ul>
-							<li>HTML</li>
-							<li>CSS</li>
-							<li>Bootstrap</li>
-							<li>Vanilla JavaScript</li>
 							<li>React</li>
+							<li>React Native</li>
+							<li>Vanilla JavaScript</li>
+							<li>Tailwind CSS</li>
+							<li>Redux Toolkit</li>
 						</ul>
 
 						<ul>
 							<li>Django</li>
-							<li>MySQL</li>
-							<li>API</li>
 							<li>Git</li>
 							<li>GitHub</li>
+							<li>AGILE</li>
 						</ul>
 
 					</div>
 
 				</div>
 
-				
+
 				<div class="social-links">
 					<img id="social_img" src={% static 'images/desktop.jpg' %}>
 					<h3>Find me on Facebook & Twitter</h3>
-					<div class = 'socials'>
-					<a target="_blank" href="https://www.facebook.com/jeremiahlena13"><img src={% static 'images/facebook.png' %}></a>
-					<a target="_blank" href="https://mobile.facebook.com/jeremiah.lena.3"><img src={% static 'images/twitter.png' %}></a>
-					<a target="_blank" href="https://www.linkedin.com/in/jeremiah-lena-790755184/"><img src={% static 'images/linkedin.svg' %}></a>
-				</div>
+					<div class='socials'>
+						<a target="_blank" href="https://www.facebook.com/jeremiahlena13"><img src={%
+								static 'images/facebook.png' %}></a>
+						<a target="_blank" href="https://mobile.facebook.com/jeremiah.lena.3"><img src={%
+								static 'images/twitter.png' %}></a>
+						<a target="_blank" href="https://www.linkedin.com/in/jeremiah-lena-790755184/"><img src={%
+								static 'images/linkedin.svg' %}></a>
+					</div>
+					<div class="resumeDownload">
+						<button class = "resumeDownload__button" role ="link">
+							<a href = {% url 'download_resume' %}>DOWNLOAD RESUME</a>
+						</button>
+					</div>
 				</div>
 			</div>
 
@@ -126,7 +138,7 @@
 		<div class="main-container">
 			<h3 style="text-align: center;">Get In Touch</h3>
 
-			<form id="contact-form" action="https://www.gmail.com" method = "POST" autocomplete="off">
+			<form id="contact-form" action="https://www.gmail.com" method="POST" autocomplete="off">
 				<a name="contact"></a>
 
 				<div class="form-field">
@@ -156,11 +168,10 @@
 				<input id="submit-btn" type="submit" value="Send">
 			</form>
 		</div>
-	</section> 
-	<section id = 'footer'>
-		&copy;2021 Designed by Lena Jeremiah
 	</section>
-	<script type="text/javascript" src = {% static 'script.js' %}></script>
-	</body>
+	<section id='footer'>
+		&copy;2021 Designed by Jeremiah Lena
+	</section>
+	<script type="text/javascript" src={% static 'script.js' %}></script>
+</body>
 {% endblock body %}
-

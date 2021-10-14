@@ -46,3 +46,11 @@ def new_project(request):
 
 def contact(request):
     return render(request, 'port/contact.html')
+
+
+def download_resume(request):
+
+    resume = open('resume.pdf', 'rb')
+    response = FileResponse(resume)
+
+    return response
