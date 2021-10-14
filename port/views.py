@@ -1,10 +1,13 @@
 from django.shortcuts import render, get_object_or_404, reverse
-from django.http import HttpResponseRedirect, Http404, HttpResponse, FileResponse
+from django.http import HttpResponseRedirect, Http404, HttpResponse
 from .models import Project, Gallery, Image
 from django.utils.text import slugify
 from django import forms
 from django.core.files.storage import default_storage
+from portfolio.settings import BASE_DIR
+from django.views.static import serve
 from portfolio.settings import FIREBASE_STORAGE as fire_storage
+import os
 
 
 def index(request):
@@ -50,7 +53,5 @@ def contact(request):
 
 def download_resume(request):
 
-    resume = open('resume.pdf', 'rb')
-    response = FileResponse(resume)
-
-    return response
+    resume_path = os.path.join(BASE_DIR, 'portfolio', 'resume.pdf');
+    return serve(request, os.path.basename(filepath), os.path.dirname(filepath))
