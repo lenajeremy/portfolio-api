@@ -7,44 +7,49 @@ from portfolio.settings import BASE_DIR
 from django.views.static import serve
 from portfolio.settings import FIREBASE_STORAGE as fire_storage
 import os
+import json
 
 
-def index(request):
-    context = [project.serialize() for project in Project.objects.all()]
-    print(context)
-    return render(request, 'port/index.html', context={'projects': context})
+def get_projects(request):
+    projects = [project.serialize() for project in Project.objects.all()]
+
+    return JsonResponse({'projects': projects}, status = 200)
 
 
-def project(request, project):
+def get_single_project(request, project):
     try:
-        project = get_object_or_404(Project, slug=slugify(project))
-        return render(request, 'port/post.html', context={'project': project.serialize()})
+        project = get_object_or_404(Project, slug=slugify(project)).serialize()
+
+        return JsonResponse(project, status = 200)
     except Http404:
-        return HttpResponseRedirect(reverse('homepage'))
+        return JsonResponse({'error': 'Unable to retrieve project'}, status = 404)
 
 
 def new_project(request):
     if request.method.upper() == "GET":
-        
-        return render(request, 'port/form.html')
-    else:
-        title = request.POST['title']
-        description = request.POST['description']
-        long_description = request.POST['long_description']
-        github_url = request.POST['github_url']
-        live_url = request.POST['live_url']
-        project = Project.objects.create(title=title, details=description, slug=slugify(
-            title), description=long_description, github_url=github_url, live_url=live_url)
-        gallery = Gallery.objects.create(project=project)
-        primaryimage = request.FILES.get('main_picture')
-        other_pictures = request.FILES.get('other_pictures')
 
-        primaryImage = Image(gallery=gallery, main=True, image=primaryimage)
-        secondaryImage= Image(gallery=gallery, image=other_pictures)
-        
-        primaryImage.saveToCloud()
-        secondaryImage.saveToCloud()
-        return HttpResponseRedirect(reverse('homepage'))
+        return JsonResponse({'error': 'Bad Request. Expected a POST request'}, status = 400)
+    else:
+        # title = request.POST['title']
+        # description = request.POST['description']
+        # long_description = request.POST['long_description']
+        # github_url = request.POST['github_url']
+        # live_url = request.POST['live_url']
+        # project = Project.objects.create(title=title, details=description, slug=slugify(
+        #     title), description=long_description, github_url=github_url, live_url=live_url)
+        # gallery = Gallery.objects.create(project=project)
+        # primaryimage = request.FILES.get('main_picture')
+        # other_pictures = request.FILES.get('other_pictures')
+
+        # primaryImage = Image(gallery=gallery, main=True, image=primaryimage)
+        # secondaryImage = Image(gallery=gallery, image=other_pictures)
+
+        # primaryImage.saveToCloud()
+        # secondaryImage.saveToCloud()
+        # return HttpResponseRedirect(reverse('homepage'))
+
+        print(request.FILES, request)
+        return JsonResponse({'message': 'in progress'})
 
 
 def contact(request):
@@ -53,5 +58,5 @@ def contact(request):
 
 def download_resume(request):
 
-    filepath = os.path.join(BASE_DIR, 'portfolio', 'resume.pdf');
+    filepath = os.path.join(BASE_DIR, 'portfolio', 'resume.pdf')
     return serve(request, os.path.basename(filepath), os.path.dirname(filepath))
