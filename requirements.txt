@@ -40,7 +40,7 @@ pytz==2021.1
 requests==2.20.0
 rsa==4.7.2
 six==1.16.0
-sqlparse==0.4.1
+sqlparse==0.4.2
 uritemplate==3.0.1
 urllib3==1.21.1
 whitenoise==5.2.0
