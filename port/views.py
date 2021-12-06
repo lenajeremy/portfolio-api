@@ -1,8 +1,7 @@
 from django.shortcuts import render, get_object_or_404, reverse
-from django.http import HttpResponseRedirect, Http404, HttpResponse
+from django.http import HttpResponseRedirect, Http404, JsonResponse
 from .models import Project, Gallery, Image
 from django.utils.text import slugify
-from django import forms
 from django.core.files.storage import default_storage
 from portfolio.settings import BASE_DIR
 from django.views.static import serve
@@ -12,6 +11,7 @@ import os
 
 def index(request):
     context = [project.serialize() for project in Project.objects.all()]
+    print(context)
     return render(request, 'port/index.html', context={'projects': context})
 
 
