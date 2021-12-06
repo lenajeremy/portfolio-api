@@ -1,3 +1,4 @@
+from django.middleware.csrf import get_token
 from django.shortcuts import render, get_object_or_404, reverse
 from django.http import HttpResponseRedirect, Http404, JsonResponse
 from .models import Project, Gallery, Image
@@ -7,8 +8,15 @@ from portfolio.settings import BASE_DIR
 from django.views.static import serve
 from portfolio.settings import FIREBASE_STORAGE as fire_storage
 import os
-import json
 
+
+
+def authenticate(request):
+    token = get_token(request)
+    return JsonResponse({
+        'token': token,
+        'message': 'successfully generated token'
+    }, status = 200)
 
 def get_projects(request):
     projects = [project.serialize() for project in Project.objects.all()]
@@ -30,26 +38,31 @@ def new_project(request):
 
         return JsonResponse({'error': 'Bad Request. Expected a POST request'}, status = 400)
     else:
-        # title = request.POST['title']
-        # description = request.POST['description']
-        # long_description = request.POST['long_description']
-        # github_url = request.POST['github_url']
-        # live_url = request.POST['live_url']
-        # project = Project.objects.create(title=title, details=description, slug=slugify(
-        #     title), description=long_description, github_url=github_url, live_url=live_url)
-        # gallery = Gallery.objects.create(project=project)
-        # primaryimage = request.FILES.get('main_picture')
-        # other_pictures = request.FILES.get('other_pictures')
+        title = request.POST['title']
+        description = request.POST['description']
+        long_description = request.POST['long_description']
+        github_url = request.POST['github_url']
+        live_url = request.POST['live_url']
+        project = Project.objects.create(title=title, details=description, slug=slugify(
+            title), description=long_description, github_url=github_url, live_url=live_url)
+        gallery = Gallery.objects.create(project=project)
+        primaryimage = request.FILES.get('primaryImage')
+        other_pictures = request.FILES.getlist('otherImages')
 
-        # primaryImage = Image(gallery=gallery, main=True, image=primaryimage)
-        # secondaryImage = Image(gallery=gallery, image=other_pictures)
+        primaryImage = Image(gallery=gallery, main=True, image=primaryimage)
 
-        # primaryImage.saveToCloud()
-        # secondaryImage.saveToCloud()
-        # return HttpResponseRedirect(reverse('homepage'))
+        primaryImage.saveToCloud()
 
-        print(request.FILES, request)
-        return JsonResponse({'message': 'in progress'})
+
+        for image in other_pictures:
+            modelImage = Image(gallery=gallery, image=image)
+            modelImage.saveToCloud()
+
+
+        return JsonResponse({
+            'message': 'Successful', 
+            # 'project': project.serialize()
+        }, status = 200)
 
 
 def contact(request):
