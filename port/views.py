@@ -19,7 +19,10 @@ def authenticate(request):
 def get_projects(request):
     projects = [project.serialize() for project in Project.objects.all()]
 
-    return JsonResponse({'projects': projects}, status = 200)
+    return JsonResponse({
+        'projects': projects, 
+        'project_count': len(projects)
+    }, status = 200)
 
 
 def get_single_project(request, project):
