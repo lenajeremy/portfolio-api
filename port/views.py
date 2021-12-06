@@ -53,5 +53,5 @@ def contact(request):
 
 def download_resume(request):
 
-    resume_path = os.path.join(BASE_DIR, 'portfolio', 'resume.pdf');
+    filepath = os.path.join(BASE_DIR, 'portfolio', 'resume.pdf');
     return serve(request, os.path.basename(filepath), os.path.dirname(filepath))
