@@ -4,7 +4,6 @@ from django.conf import settings
 from ckeditor.fields import RichTextField
 from portfolio.settings import FIREBASE_STORAGE as fire_storage
 from django.core.files.storage import default_storage
-# Create your models here.
 
 
 def upload_path(instance, filename):
