@@ -1,3 +1,4 @@
+from django.http.response import HttpResponseRedirect
 from django.middleware.csrf import get_token
 from django.shortcuts import render, get_object_or_404, reverse
 from django.http import Http404, JsonResponse
@@ -7,6 +8,10 @@ from portfolio.settings import BASE_DIR
 from django.views.static import serve
 import os
 
+
+
+def index(request):
+    return HttpResponseRedirect('https://jeremiah.vercel.app')
 
 
 def authenticate(request):
