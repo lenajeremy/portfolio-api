@@ -1,12 +1,10 @@
 from django.middleware.csrf import get_token
 from django.shortcuts import render, get_object_or_404, reverse
-from django.http import HttpResponseRedirect, Http404, JsonResponse
+from django.http import Http404, JsonResponse
 from .models import Project, Gallery, Image
 from django.utils.text import slugify
-from django.core.files.storage import default_storage
 from portfolio.settings import BASE_DIR
 from django.views.static import serve
-from portfolio.settings import FIREBASE_STORAGE as fire_storage
 import os
 
 
@@ -61,7 +59,7 @@ def new_project(request):
 
         return JsonResponse({
             'message': 'Successful', 
-            # 'project': project.serialize()
+            'project': project.serialize()
         }, status = 200)
 
 

@@ -15,7 +15,7 @@ class Project(models.Model):
 
     title = models.CharField(max_length=100)
     details = models.CharField(max_length=250)
-    slug = models.SlugField(max_length=250, blank=True)
+    slug = models.SlugField(max_length=250, blank=True, unique=True)
     description = RichTextField()
     live_url = models.TextField()
     github_url = models.TextField()
