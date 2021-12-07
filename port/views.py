@@ -1,8 +1,9 @@
+from json.encoder import JSONEncoder
 from django.http.response import HttpResponseRedirect
 from django.middleware.csrf import get_token
 from django.shortcuts import render, get_object_or_404, reverse
 from django.http import Http404, JsonResponse
-from .models import Project, Gallery, Image
+from .models import Project, Gallery, Image, BlogArticles
 from django.utils.text import slugify
 from portfolio.settings import BASE_DIR
 from django.views.static import serve
@@ -28,6 +29,23 @@ def get_projects(request):
         'projects': projects, 
         'project_count': len(projects)
     }, status = 200)
+
+def get_articles(request):
+    articles = [article.serialize() for article in BlogArticles.objects.all()]
+
+    return JsonResponse({
+        'articles': articles,
+        'articles_count': articles.length,
+        'message': 'successfully returned articles'
+    })
+
+def get_single_article(requst, articleSlug):
+    try:
+        article = get_object_or_404(BlogArticles, slug = slugify(articleSlug)).serialize()
+
+        return JsonResponse(article, status = 200)
+    except Http404:
+        return JsonResponse({'error': 'Unable to retrieve article'}, status = 404)
 
 
 def get_single_project(request, project):

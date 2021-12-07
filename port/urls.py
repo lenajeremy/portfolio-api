@@ -8,7 +8,9 @@ urlpatterns = [
     path('add_project/', views.new_project, name = 'new_project'),
     path('contact/', views.contact, name = 'contact'),
     path('download_resume/', views.download_resume, name = 'download_resume'),
-    path('project/<str:project>/', views.get_single_project, name = 'project')
+    path('project/<str:project>/', views.get_single_project, name = 'project'),
+    path('get_articles/', views.get_articles, name = 'get_articles'),
+    path('articles/:articleSlug', views.get_single_article, name = 'get_single_article')
 ]
 
 
