@@ -26,7 +26,7 @@ class BlogArticles(models.Model):
             'main_image': self.gallery.images.get(main=True).serialize(),
             'other_images': [image.serialize() for image in self.gallery.images.filter(main = False)],
         }
-        
+
         return data
 
     def __str__(self):
