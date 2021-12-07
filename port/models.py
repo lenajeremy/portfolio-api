@@ -44,8 +44,8 @@ class Project(models.Model):
     def serialize(self):
         data = {
             'title': self.title,
-            'description': self.description,
-            'details': self.details,
+            'content': self.description,
+            'description': self.details,
             'slug': self.slug,
             'main_image': self.gallery.images.get(main=True).serialize(),
             'other_images': [image.serialize() for image in self.gallery.images.filter(main = False)],
