@@ -10,6 +10,28 @@ def upload_path(instance, filename):
     return f"{instance.gallery.project}/{filename}"
 
 
+class BlogArticles(models.Model):
+
+    title = models.CharField(max_length=100)
+    details = models.CharField(max_length=250)
+    slug = models.SlugField(max_length=250, blank=True, unique=True)
+    description = RichTextField()
+
+    def serialize(self):
+        data = {
+            'title': self.title,
+            'description': self.description,
+            'details': self.details,
+            'slug': self.slug,
+            'main_image': self.gallery.images.get(main=True).serialize(),
+            'other_images': [image.serialize() for image in self.gallery.images.filter(main = False)],
+        }
+        
+        return data
+
+    def __str__(self):
+        return self.title
+
 class Project(models.Model):
 
     title = models.CharField(max_length=100)
