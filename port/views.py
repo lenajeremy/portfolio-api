@@ -12,7 +12,7 @@ import os
 
 
 def index(request):
-    return HttpResponseRedirect('https://jeremiah.vercel.app')
+    return HttpResponseRedirect('https://www.jerryjacinth.codes/')
 
 
 def authenticate(request):
